@@ -1,15 +1,15 @@
-export default async function handler(req, res) {
+const BOT_TOKEN = "8545433215:AAEDE1jpFHjYMID7jTjMfvvZ3lyHTeEAfvU";
+const WEB_APP_URL = "https://webbotqhfu.vercel.app/";
+
+module.exports = async (req, res) => {
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
+    return res.status(200).send("OK");
   }
 
-  const { message } = req.body;
+  const message = req.body?.message;
 
   if (message?.text === "/start") {
-    const token = process.env.BOT_TOKEN;
-    const webAppUrl = process.env.WEB_APP_URL;
-
-    await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -23,7 +23,7 @@ export default async function handler(req, res) {
               {
                 text: "Открыть приложение",
                 web_app: {
-                  url: webAppUrl,
+                  url: WEB_APP_URL,
                 },
               },
             ],
@@ -34,4 +34,4 @@ export default async function handler(req, res) {
   }
 
   return res.status(200).json({ ok: true });
-}
+};
