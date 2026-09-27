@@ -1,19 +1,177 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leosin</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-    <main class="welcome">
-        <h1>Добро пожаловать в Leosin</h1>
-        <p>Рады видеть тебя!</p>
-    </main>
+    <title>Leosin</title>
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div>
+          <div class="brand">Leosin</div>
+          <div class="subtitle">Магазин аккаунтов</div>
+        </div>
+
+        <div class="balance-mini">
+          <span>⭐</span>
+          <span id="topBalance">0</span>
+        </div>
+      </header>
+
+      <main class="content">
+        <!-- КАТАЛОГ -->
+        <section id="catalog" class="page active">
+          <div class="welcome-card">
+            <div>
+              <span class="welcome-small">Добро пожаловать</span>
+              <h1>Выбирай товар</h1>
+              <p>Найди подходящий вариант в каталоге.</p>
+            </div>
+          </div>
+
+          <div class="section-title">
+            <h2>Каталог</h2>
+          </div>
+
+          <div class="country-scroll">
+            <button class="country active" data-country="all">Все</button>
+            <button class="country" data-country="ru">🇷🇺 Россия</button>
+            <button class="country" data-country="uz">🇺🇿 Узбекистан</button>
+            <button class="country" data-country="kz">🇰🇿 Казахстан</button>
+          </div>
+
+          <div id="products" class="products"></div>
+        </section>
+
+        <!-- ПОПОЛНИТЬ -->
+        <section id="topup" class="page">
+          <div class="section-title">
+            <h2>Пополнить баланс</h2>
+            <p>Оплата только Telegram Stars</p>
+          </div>
+
+          <div class="balance-card">
+            <span class="balance-label">Текущий баланс</span>
+
+            <div class="balance-value">
+              <span>⭐</span>
+              <strong id="balance">0</strong>
+            </div>
+          </div>
+
+          <div class="section-title small">
+            <h3>Выберите сумму</h3>
+          </div>
+
+          <div class="star-grid">
+            <button class="star-pack" data-stars="50">
+              <strong>50 ⭐</strong>
+              <span>пополнить</span>
+            </button>
+
+            <button class="star-pack" data-stars="100">
+              <strong>100 ⭐</strong>
+              <span>пополнить</span>
+            </button>
+
+            <button class="star-pack" data-stars="250">
+              <strong>250 ⭐</strong>
+              <span>пополнить</span>
+            </button>
+
+            <button class="star-pack" data-stars="500">
+              <strong>500 ⭐</strong>
+              <span>пополнить</span>
+            </button>
+          </div>
+
+          <div class="info-box">
+            <span class="info-icon">⭐</span>
+            <div>
+              <strong>Telegram Stars</strong>
+              <p>
+                Пополнение будет происходить через официальную оплату Telegram.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ПРОФИЛЬ -->
+        <section id="profile" class="page">
+          <div class="profile-card">
+            <div class="avatar-wrap">
+              <img
+                id="avatar"
+                src="https://via.placeholder.com/120"
+                alt="avatar"
+              />
+            </div>
+
+            <div class="profile-name" id="profileName">Пользователь</div>
+            <div class="profile-username" id="profileUsername">@username</div>
+          </div>
+
+          <div class="profile-info">
+            <div class="info-row">
+              <div>
+                <span class="info-title">Telegram ID</span>
+                <span class="info-value" id="telegramId">—</span>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <div>
+                <span class="info-title">Username</span>
+                <span class="info-value" id="usernameValue">—</span>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <div>
+                <span class="info-title">Баланс</span>
+                <span class="info-value"
+                  >⭐ <span id="profileBalance">0</span></span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="section-title purchase-title">
+            <h2>История покупок</h2>
+          </div>
+
+          <div id="purchaseHistory" class="history"></div>
+        </section>
+      </main>
+
+      <!-- НИЖНЯЯ НАВИГАЦИЯ -->
+      <nav class="bottom-nav">
+        <button class="nav-item active" data-page="catalog">
+          <span class="nav-icon">🛍️</span>
+          <span>Каталог</span>
+        </button>
+
+        <button class="nav-item" data-page="topup">
+          <span class="nav-icon">⭐</span>
+          <span>Пополнить</span>
+        </button>
+
+        <button class="nav-item" data-page="profile">
+          <span class="nav-icon">👤</span>
+          <span>Профиль</span>
+        </button>
+      </nav>
+    </div>
+
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
